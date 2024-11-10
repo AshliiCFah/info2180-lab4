@@ -8,20 +8,30 @@
 </head>
 <body>
 
+  <!-- Header Section -->
   <div class="header">
     <h1>AVENGERS CHARACTER SEARCH</h1>
   </div>
 
+  <!-- Search Section -->
   <div class="search-section">
     <label for="search-input">Search by Full Name or Alias</label>
-    <input type="text" id="search-input" placeholder="Enter character name, e.g., Captain America">
-    <button type="button" id="search-btn">Search</button>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="e.g. Captain America or Steve Rogers">
+      <button type="button" id="search-btn">Search</button>
+    </div>
   </div>
 
+  <!-- Result Section -->
   <div id="result">
-    <!-- This div will display the result -->
+    <h2>RESULT</h2>
+    <hr>
+    <ul id="character-list">
+      <!-- List of characters will appear here -->
+    </ul>
   </div>
 
   <script src="app.js"></script>
 </body>
 </html>
+
