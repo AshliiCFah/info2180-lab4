@@ -5,15 +5,8 @@ document.getElementById("search-btn").addEventListener("click", function() {
     // Define what happens when the response is loaded
     xhr.onload = function() {
         if (xhr.status === 200) {
-            // Get the list of superheroes from the response
-            const superheroes = JSON.parse(xhr.responseText);
-
-            // Create the HTML for the list
-            const listHTML = superheroes.map(superhero => `<li>${superhero.alias}</li>`).join('');
-
-            // Display the list in the HTML
-            document.getElementById("character-list").innerHTML = listHTML;
-            document.getElementById("character-list").style.display = "block";
+            // Show the list of superheroes as an alert
+            alert(xhr.responseText);
         } else {
             alert("An error occurred while trying to fetch the data.");
         }
