@@ -63,30 +63,33 @@ $superheroes = [
   ], 
 ];
 
-// Get the search query
-$query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_STRING);
+// Get the query parameter from the URL
+$query = isset($_GET['query']) ? strtolower(trim($_GET['query'])) : '';
 
-if ($query) {
-    $found = false;
+// If the query is empty, return an empty array
+if (empty($query)) {
+    echo json_encode([]);
+    exit;
+}
+
+// Function to search for a superhero by alias or name (case insensitive)
+function searchSuperheroes($query, $superheroes) {
+    $result = [];
     foreach ($superheroes as $hero) {
-        if (strcasecmp($hero['alias'], $query) === 0 || strcasecmp($hero['name'], $query) === 0) {
-            echo "<h3>{$hero['alias']}</h3>";
-            echo "<h4>{$hero['name']}</h4>";
-            echo "<p>{$hero['bio']}</p>";
-            $found = true;
-            break;
+        // Debugging: Print alias and query to check for issues
+        echo "Query: '$query' | Alias: '{$hero['alias']}'\n"; // For debugging purposes
+        
+        // Perform a case-insensitive search using stripos
+        if (stripos($hero['alias'], $query) !== false || stripos($hero['name'], $query) !== false) {
+            $result[] = $hero;
         }
     }
-
-    if (!$found) {
-        echo "<p>Superhero not found</p>";
-    }
-} else {
-    // Show the original list of superheroes
-    foreach ($superheroes as $hero) {
-        echo "<h3>{$hero['alias']}</h3>";
-        echo "<h4>{$hero['name']}</h4>";
-        echo "<p>{$hero['bio']}</p><hr>";
-    }
+    return $result;
 }
+
+// Search for superheroes
+$matchingHeroes = searchSuperheroes($query, $superheroes);
+
+// Return the search results as JSON
+echo json_encode($matchingHeroes);
 ?>
