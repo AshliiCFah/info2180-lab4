@@ -8,9 +8,9 @@ document.getElementById("search-btn").addEventListener("click", function() {
     // Define what happens when the response is loaded
     xhr.onload = function() {
         if (xhr.status === 200) {
-            document.getElementById("result").innerHTML = xhr.responseText; // Display result in the result div
+            alert(xhr.responseText); // Display result as an alert
         } else {
-            document.getElementById("result").innerHTML = "An error occurred while trying to fetch the data.";
+            alert("An error occurred while trying to fetch the data.");
         }
     };
 

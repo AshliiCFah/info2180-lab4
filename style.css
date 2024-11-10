@@ -1,38 +1,18 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.header {
-  background-color: #00008B;
-  color: white;
-  padding: 20px;
+  background-color: #ccc;
   text-align: center;
+  font-family: Arial, sans-serif;
 }
 
-.search-section {
-  padding: 20px;
-}
-
-.search-section input {
-  padding: 10px;
-  border: 1px solid #ccc;
-}
-
-.search-section button {
-  background-color: #ADD8E6;
+button {
+  background-color: #4CAF50;
+  border: none;
   color: white;
   padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
 }
 
-.result {
-  margin-top: 20px;
-}
-
-.error-message {
-  color: red;
+button:hover {
+  background-color: #45a049;
 }
