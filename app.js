@@ -7,10 +7,34 @@ document.getElementById("search-btn").addEventListener("click", function() {
 
     // Define what happens when the response is loaded
     xhr.onload = function() {
+        const resultDiv = document.getElementById("result");
         if (xhr.status === 200) {
-            alert(xhr.responseText); // Display result as an alert
+            const response = JSON.parse(xhr.responseText); // Parse JSON response
+
+            // Clear previous results
+            resultDiv.innerHTML = '';
+
+            if (Array.isArray(response)) {
+                // If the response is an array, display the list of superheroes
+                let listHtml = '<ul>';
+                response.forEach(hero => {
+                    listHtml += `<li>${hero}</li>`;
+                });
+                listHtml += '</ul>';
+                resultDiv.innerHTML = listHtml;
+            } else if (response.alias && response.name && response.bio) {
+                // If a single superhero is returned
+                resultDiv.innerHTML = `
+                    <h3>${response.alias}</h3>
+                    <h4>A.K.A ${response.name}</h4>
+                    <p>${response.bio}</p>
+                `;
+            } else {
+                // If no superhero matches the query
+                resultDiv.innerHTML = '<p class="error">Superhero not found</p>';
+            }
         } else {
-            alert("An error occurred while trying to fetch the data.");
+            resultDiv.innerHTML = '<p class="error">An error occurred while trying to fetch the data.</p>';
         }
     };
 

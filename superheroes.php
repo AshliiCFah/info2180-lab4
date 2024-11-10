@@ -63,10 +63,23 @@ $superheroes = [
   ], 
 ];
 
-?>
+$query = isset($_GET['query']) ? trim($_GET['query']) : '';
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+if ($query === '') {
+    // Return list of all superheroes
+    echo json_encode(array_column($superheroes, 'alias'));
+} else {
+    // Search for a specific superhero
+    $result = array_filter($superheroes, function($hero) use ($query) {
+        return stripos($hero['alias'], $query) !== false || stripos($hero['name'], $query) !== false;
+    });
+
+    if (!empty($result)) {
+        // Return the first match
+        echo json_encode(array_values($result)[0]);
+    } else {
+        // Return an empty JSON object if no match is found
+        echo json_encode([]);
+    }
+}
+?>
