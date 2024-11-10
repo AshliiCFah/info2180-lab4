@@ -63,6 +63,7 @@ $superheroes = [
   ], 
 ];
 
+
 // Get the query parameter from the URL
 $query = isset($_GET['query']) ? strtolower(trim($_GET['query'])) : '';
 
@@ -72,13 +73,10 @@ if (empty($query)) {
     exit;
 }
 
-// Function to search for a superhero by alias or name (case insensitive)
+// Function to search for a superhero by alias or name (case-insensitive)
 function searchSuperheroes($query, $superheroes) {
     $result = [];
     foreach ($superheroes as $hero) {
-        // Debugging: Print alias and query to check for issues
-        echo "Query: '$query' | Alias: '{$hero['alias']}'\n"; // For debugging purposes
-        
         // Perform a case-insensitive search using stripos
         if (stripos($hero['alias'], $query) !== false || stripos($hero['name'], $query) !== false) {
             $result[] = $hero;
