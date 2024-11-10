@@ -61,12 +61,30 @@ $superheroes = [
       "alias" => "Scarlett Witch",
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
   ], 
-];
-
-?>
-
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+  
+  $query = isset($_GET['query']) ? htmlspecialchars(trim($_GET['query'])) : ''; // Sanitize input
+  $resultFound = false;
+  
+  if ($query) {
+      // Search for a superhero by name or alias in the existing $superheroes array
+      foreach ($superheroes as $superhero) {
+          if (strcasecmp($superhero['name'], $query) === 0 || strcasecmp($superhero['alias'], $query) === 0) {
+              echo "<h3>{$superhero['alias']}</h3>";
+              echo "<h4>A.K.A {$superhero['name']}</h4>";
+              echo "<p>{$superhero['biography']}</p>";
+              $resultFound = true;
+              break;
+          }
+      }
+      if (!$resultFound) {
+          echo "<p style='color: red;'>Superhero not found</p>";
+      }
+  } else {
+      // Display all superheroes if no query is provided
+      echo "<ul>";
+      foreach ($superheroes as $superhero) {
+          echo "<li>{$superhero['alias']}</li>";
+      }
+      echo "</ul>";
+  }
+  ?>
