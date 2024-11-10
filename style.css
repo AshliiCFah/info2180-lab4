@@ -1,15 +1,11 @@
-/* Body styling */
 body {
-  background-color: #ccc; /* Light grey background */
+  background-color: #ccc;
   text-align: center;
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
-/* Button styling */
 button {
-  background-color: #4CAF50; /* Green background */
+  background-color: #4CAF50;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -19,47 +15,5 @@ button {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 5px; /* Optional: for rounded corners */
 }
 
-button:hover {
-  background-color: #45a049; /* Slightly darker green on hover */
-}
-
-/* Custom Alert (Modal) */
-.custom-alert {
-  background-color: white; /* White background for alert box */
-  border: 1px solid #ddd; /* Light border around the modal */
-  padding: 20px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Centers the modal */
-  z-index: 9999;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds shadow for a floating effect */
-  border-radius: 8px; /* Rounded corners for the modal */
-  width: 300px; /* Width of the modal */
-  text-align: center;
-}
-
-.custom-alert button {
-  background-color: #4CAF50; /* Green button inside modal */
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.custom-alert button:hover {
-  background-color: #45a049; /* Darker green on hover */
-}
-
-/* Semi-transparent background */
-.modal-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-  z-index: 9998; /* Just below the modal */
-}
