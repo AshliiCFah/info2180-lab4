@@ -1,55 +1,27 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const searchBtn = document.getElementById("search-btn");
-    const overlay = document.createElement("div");
-    overlay.classList.add("overlay");
-    document.body.appendChild(overlay);
+document.getElementById("search-btn").addEventListener("click", function() {
+    // Create a new XMLHttpRequest object
+    const xhr = new XMLHttpRequest();
 
-    const modal = document.createElement("div");
-    modal.classList.add("modal");
-    document.body.appendChild(modal);
+    // Define what happens when the response is loaded
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Get the list of superheroes from the response
+            const superheroes = JSON.parse(xhr.responseText);
 
-    // Function to open the modal
-    function openModal(data) {
-        modal.innerHTML = `
-            <ul>
-                ${data.map(name => `<li>${name}</li>`).join('')}
-            </ul>
-            <button id="ok-btn">OK</button>
-        `;
-        
-        overlay.style.display = "block";
-        modal.style.display = "block";
+            // Create the HTML for the list
+            const listHTML = superheroes.map(superhero => `<li>${superhero.alias}</li>`).join('');
 
-        // Event listener to close the modal when OK button is clicked
-        document.getElementById("ok-btn").addEventListener("click", closeModal);
-        overlay.addEventListener("click", closeModal);
-    }
+            // Display the list in the HTML
+            document.getElementById("character-list").innerHTML = listHTML;
+            document.getElementById("character-list").style.display = "block";
+        } else {
+            alert("An error occurred while trying to fetch the data.");
+        }
+    };
 
-    // Function to close the modal
-    function closeModal() {
-        overlay.style.display = "none";
-        modal.style.display = "none";
-    }
+    // Configure the AJAX request to superheroes.php
+    xhr.open("GET", "superheroes.php", true);
 
-    // Fetch data from superheroes.php on button click
-    searchBtn.addEventListener("click", () => {
-        fetch('superheroes.php')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                return response.json(); // Assuming superheroes.php returns JSON data
-            })
-            .then(data => {
-                openModal(data);
-            })
-            .catch(error => {
-                console.error("Error fetching data:", error);
-                modal.innerHTML = `
-                    <p>Failed to load data. Please try again later.</p>
-                    <button id="ok-btn">OK</button>
-                `;
-                openModal([]);
-            });
-    });
+    // Send the request
+    xhr.send();
 });
