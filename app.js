@@ -1,30 +1,49 @@
-const searchButton = document.getElementById('searchButton');
-
-searchButton.addEventListener('click', () => {
+document.getElementById("search-btn").addEventListener("click", function() { 
+    // Create a new XMLHttpRequest object
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'superheroes.php');
 
-    xhr.onload = () => {
+    // Define what happens when the response is loaded
+    xhr.onload = function() {
         if (xhr.status === 200) {
-            const superheroes = xhr.responseText;
-
-            // Create a custom alert element
-            const alertDiv = document.createElement('div');
-            alertDiv.classList.add('custom-alert');
-            alertDiv.textContent = superheroes;
-
-            // Add the alert to the body
-            document.body.appendChild(alertDiv);
-
-            // Remove the alert after a certain time (optional)
-            setTimeout(() => {
-                alertDiv.remove();
-            }, 3000); // Remove after 3 seconds
+            // Create custom modal
+            showModal(xhr.responseText);
         } else {
-            console.error('Error fetching superheroes:', xhr.statusText);
-            alert('An error occurred while fetching superheroes.');
+            showModal("An error occurred while trying to fetch the data.");
         }
     };
 
+    // Configure the AJAX request to superheroes.php
+    xhr.open("GET", "superheroes.php", true);
+
+    // Send the request
     xhr.send();
 });
+
+// Function to show the modal
+function showModal(message) {
+    // Create modal elements
+    const modal = document.createElement("div");
+    const modalContent = document.createElement("div");
+    const messageElement = document.createElement("p");
+    const okButton = document.createElement("button");
+
+    // Add classes for styling
+    modal.classList.add("modal");
+    modalContent.classList.add("modal-content");
+    okButton.classList.add("ok-button");
+
+    // Set the message and button text
+    messageElement.textContent = message;
+    okButton.textContent = "Okay";
+
+    // Append the elements to the DOM
+    modalContent.appendChild(messageElement);
+    modalContent.appendChild(okButton);
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+
+    // Add event listener to close the modal when "Okay" is clicked
+    okButton.addEventListener("click", function() {
+        document.body.removeChild(modal);
+    });
+}
