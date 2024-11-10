@@ -8,15 +8,11 @@ document.getElementById("search-btn").addEventListener("click", function() {
     // Define what happens when the response is loaded
     xhr.onload = function() {
         const resultDiv = document.getElementById("result");
-
-        // Add a title and horizontal line above the results
-        resultDiv.innerHTML = `
-            <h2>RESULT</h2>
-            <hr>
-        `;
-
         if (xhr.status === 200) {
             const response = JSON.parse(xhr.responseText); // Parse JSON response
+
+            // Clear previous results
+            resultDiv.innerHTML = '';
 
             if (Array.isArray(response)) {
                 // If the response is an array, display the list of superheroes
@@ -25,20 +21,20 @@ document.getElementById("search-btn").addEventListener("click", function() {
                     listHtml += `<li>${hero}</li>`;
                 });
                 listHtml += '</ul>';
-                resultDiv.innerHTML += listHtml;
+                resultDiv.innerHTML = listHtml;
             } else if (response.alias && response.name && response.bio) {
                 // If a single superhero is returned
-                resultDiv.innerHTML += `
+                resultDiv.innerHTML = `
                     <h3>${response.alias}</h3>
                     <h4>A.K.A ${response.name}</h4>
                     <p>${response.bio}</p>
                 `;
             } else {
                 // If no superhero matches the query
-                resultDiv.innerHTML += '<p class="error">SUPERHERO NOT FOUND</p>';
+                resultDiv.innerHTML = '<p class="error">Superhero not found</p>';
             }
         } else {
-            resultDiv.innerHTML += '<p class="error">An error occurred while trying to fetch the data.</p>';
+            resultDiv.innerHTML = '<p class="error">An error occurred while trying to fetch the data.</p>';
         }
     };
 
