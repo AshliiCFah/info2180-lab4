@@ -1,47 +1,49 @@
 document.getElementById("search-btn").addEventListener("click", function() {
-    // Get the search input from the user and sanitize it
     const searchInput = document.getElementById("search-input").value.trim();
-    const sanitizedQuery = encodeURIComponent(searchInput); // Sanitize input by encoding it
-
+    const sanitizedQuery = encodeURIComponent(searchInput);
+  
     // Create a new XMLHttpRequest object
     const xhr = new XMLHttpRequest();
-
-    // Open the request - set up the HTTP GET request to the PHP script
-    xhr.open("GET", `superheroes.php?query=${sanitizedQuery}`, true);
-
+  
     // Define what happens when the response is loaded
     xhr.onload = function() {
-        const resultDiv = document.getElementById("result");
-        if (xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText); // Parse JSON response
-
-            // Clear previous results
-            resultDiv.innerHTML = '';
-
-            if (Array.isArray(response) && response.length > 0) {
-                // If the response is an array, display the list of superheroes
-                let listHtml = '<ul>';
-                response.forEach(hero => {
-                    listHtml += `<li>${hero}</li>`; // Display each hero's alias in a list
-                });
-                listHtml += '</ul>';
-                resultDiv.innerHTML = listHtml;
-            } else if (response.alias && response.name && response.bio) {
-                // If only one superhero is returned, format it correctly
-                resultDiv.innerHTML = `
-                    <h3>${response.alias}</h3>
-                    <h4>A.K.A ${response.name}</h4>
-                    <p>${response.bio}</p>
-                `;
-            } else {
-                // If no superheroes are found, display an error message
-                resultDiv.innerHTML = '<p class="error">SUPERHERO NOT FOUND</p>';
-            }
+      const resultDiv = document.getElementById("result");
+      
+      // Clear previous results
+      resultDiv.innerHTML = '<h2>RESULT</h2><hr>';
+  
+      if (xhr.status === 200) {
+        const response = JSON.parse(xhr.responseText); // Parse JSON response
+  
+        if (Array.isArray(response)) {
+          // Display list of superheroes if response is an array
+          let listHtml = '<ul>';
+          response.forEach(hero => {
+            listHtml += `<li>${hero}</li>`;
+          });
+          listHtml += '</ul>';
+          resultDiv.innerHTML += listHtml;
+  
+        } else if (response.alias && response.name && response.bio) {
+          // Display single superhero details
+          resultDiv.innerHTML += `
+            <h3>${response.alias}</h3> <!-- Alias in <h3> -->
+            <h4>A.K.A ${response.name}</h4> <!-- Name in <h4> -->
+            <p>${response.bio}</p> <!-- Bio in <p> -->
+          `;
         } else {
-            resultDiv.innerHTML = '<p class="error">An error occurred while trying to fetch the data.</p>';
+          // Display error if no match is found
+          resultDiv.innerHTML += '<p class="error">SUPERHERO NOT FOUND</p>';
         }
+      } else {
+        resultDiv.innerHTML = '<p class="error">An error occurred while trying to fetch the data.</p>';
+      }
     };
-
-    // Send the request to the server
+  
+    // Configure the AJAX request to superheroes.php with query parameter
+    xhr.open("GET", `superheroes.php?query=${sanitizedQuery}`, true);
+  
+    // Send the request
     xhr.send();
-});
+  });
+  
