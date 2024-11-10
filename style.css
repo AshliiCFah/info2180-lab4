@@ -10,92 +10,46 @@ body {
   padding: 20px;
 }
 
-.header h1 {
-  font-family: "Arial Black", Arial, sans-serif;
-  font-size: 36px;
-  margin: 0;
-  letter-spacing: 1px;
-}
-
 .search-section {
   margin: 20px auto;
   width: 50%;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
 }
 
 input[type="text"] {
   width: 70%;
-  padding: 12px;
+  padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
 button {
   background-color: #d9534f;
   border: none;
   color: white;
-  padding: 12px 20px;
+  padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 5px;
 }
 
 button:hover {
   background-color: #c9302c;
 }
 
-.result-section {
-  width: 50%;
-  margin: 20px auto;
-  text-align: left;
-}
-
-.result-section h2 {
-  font-weight: bold;
-  text-align: center;
-  color: #333;
-  margin-bottom: 10px;
-}
-
 #result {
+  margin: 20px auto;
+  width: 50%;
+  text-align: left;
   padding: 20px;
   background-color: #ffffff;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-#result ul {
-  list-style-type: none; /* Remove default bullets */
-  padding: 0;
-}
-
-#result ul li {
-  position: relative;
-  padding-left: 20px;
-  margin: 5px 0;
-  font-size: 16px;
-  color: #333;
-}
-
-#result ul li::before {
-  content: "•"; /* Custom bullet style */
-  position: absolute;
-  left: 0;
-  color: #1e70bf;
-  font-size: 20px;
-}
-
 #result h3 {
   color: #1e70bf;
-  font-weight: bold;
 }
 
 #result h4 {
-  color: #555;
-  font-weight: bold;
+  color: #333;
 }
 
 #result p {
