@@ -63,7 +63,6 @@ $superheroes = [
   ], 
 ];
 
-
 // Get the query parameter from the URL
 $query = isset($_GET['query']) ? strtolower(trim($_GET['query'])) : '';
 

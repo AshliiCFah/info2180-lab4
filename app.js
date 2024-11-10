@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
       xhr.onload = function() {
         const resultDiv = document.getElementById("result");
   
-        resultDiv.innerHTML = '<h2>RESULT</h2><hr>';
+        resultDiv.innerHTML = '<h2>RESULT</h2><hr>';  // Ensure the title and horizontal line appear
   
         if (xhr.status === 200) {
           const response = JSON.parse(xhr.responseText); // Parse JSON response
@@ -19,12 +19,12 @@ document.addEventListener("DOMContentLoaded", function() {
             // If the response is an array, display the list of superheroes
             let listHtml = '<ul>';
             response.forEach(hero => {
-              listHtml += `<li>${hero}</li>`;
+              listHtml += `<li>${hero.alias} - ${hero.name}</li>`;  // Display alias and name
             });
             listHtml += '</ul>';
             resultDiv.innerHTML += listHtml;
           } else if (response.alias && response.name && response.bio) {
-            // If a single superhero is returned
+            // If a single superhero is returned, display their details properly
             resultDiv.innerHTML += `
               <h3>${response.alias}</h3>
               <h4>A.K.A ${response.name}</h4>
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
             resultDiv.innerHTML += '<p class="error">SUPERHERO NOT FOUND</p>';
           }
         } else {
-          resultDiv.innerHTML = '<p class="error">An error occurred while trying to fetch the data.</p>';
+          resultDiv.innerHTML += '<p class="error">An error occurred while trying to fetch the data.</p>';
         }
       };
   
