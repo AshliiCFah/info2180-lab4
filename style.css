@@ -1,6 +1,6 @@
 /* Body Styling */
 body {
-  background-color: #f0f0f0;
+  background-color: #f0f0f0; /* Unified background color */
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@ body {
 
 /* Header Styling */
 .header {
-  background-color: #1e70bf;
+  background-color: #1e70bf; /* Unique header background */
   color: white;
   padding: 20px;
   font-size: 24px;
@@ -17,13 +17,20 @@ body {
   text-align: center;
 }
 
-/* Search Section Styling */
-.search-section {
-  background-color: white;
-  padding: 20px;
+/* Main Content Section Styling */
+.main-content {
+  background-color: #ffffff; /* White background for content */
   margin: 0 auto;
+  padding: 20px 0;
   width: 60%;
   box-sizing: border-box;
+  text-align: center;
+  border-radius: 5px; /* Optional for a card-like look */
+}
+
+/* Search Section Styling */
+.search-section {
+  margin-bottom: 20px;
 }
 
 .search-section label {
@@ -39,10 +46,11 @@ body {
   display: flex;
   align-items: center;
   gap: 5px;
+  justify-content: center;
 }
 
 input[type="text"] {
-  width: 80%;
+  width: 70%;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -70,14 +78,8 @@ button:hover {
 
 /* Result Section Styling */
 #result {
-  background-color: white;
-  width: 60%;
-  margin: 20px auto;
-  padding: 20px;
-  box-sizing: border-box;
   text-align: left;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 20px;
 }
 
 #result h2 {
