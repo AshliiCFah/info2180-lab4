@@ -9,34 +9,34 @@ document.addEventListener("DOMContentLoaded", function() {
         // Define what happens when the response is loaded
         xhr.onload = function() {
             const resultDiv = document.getElementById("result");
-
-            resultDiv.innerHTML = '<h2>RESULT</h2><hr>';  // Ensure the title and horizontal line appear
+            resultDiv.innerHTML = '';  // Clear previous results
 
             if (xhr.status === 200) {
                 const response = JSON.parse(xhr.responseText); // Parse JSON response
 
                 if (response.length === 0) {
                     // No superheroes found
-                    resultDiv.innerHTML += '<p class="error">SUPERHERO NOT FOUND</p>';
+                    resultDiv.innerHTML = '<p class="error">SUPERHERO NOT FOUND</p>';
                 } else if (response.length === 1) {
                     // Display single superhero details
                     const hero = response[0];
-                    resultDiv.innerHTML += `
+                    resultDiv.innerHTML = `
+                        <h2>RESULT</h2><hr>
                         <h3>${hero.alias.toUpperCase()}</h3>
                         <h4>A.K.A ${hero.name}</h4>
                         <p>${hero.biography}</p>
                     `;
                 } else {
                     // Display list of superheroes
-                    let listHtml = '<ul>';
+                    let listHtml = '<h2>RESULT</h2><hr><ul>';
                     response.forEach(hero => {
                         listHtml += `<li>${hero.alias} - ${hero.name}</li>`;
                     });
                     listHtml += '</ul>';
-                    resultDiv.innerHTML += listHtml;
+                    resultDiv.innerHTML = listHtml;
                 }
             } else {
-                resultDiv.innerHTML += '<p class="error">An error occurred while trying to fetch the data.</p>';
+                resultDiv.innerHTML = '<p class="error">An error occurred while trying to fetch the data.</p>';
             }
         };
 
@@ -47,5 +47,3 @@ document.addEventListener("DOMContentLoaded", function() {
         xhr.send();
     });
 });
-
-  
