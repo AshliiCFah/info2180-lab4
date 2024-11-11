@@ -9,7 +9,7 @@ body {
 
 /* Header Styling */
 .header {
-  background-color: #4a7dac; /* Blue for header background */
+  background-color: #4a7dac; /* blue for header background */
   color: white;
   padding: 20px;
   font-size: 24px;
@@ -41,20 +41,19 @@ body {
   margin-bottom: 10px;
 }
 
-/* Search Bar Styling */
 .search-bar {
   display: flex;
   align-items: center;
-  gap: 0; /* Removed gap to make button align flush with the input field */
+  gap: 8px;
   justify-content: center;
 }
 
 input[type="text"] {
-  width: 85%; /* Adjusted width to leave room for the button */
-  padding: 12px; /* Consistent padding for the input field */
+  width: 90%; /* Increased the width of the search field */
+  padding: 12px; /* Added more padding for better fit */
   font-size: 20px;
   border: 1px solid #ccc;
-  border-radius: 5px 0 0 5px; /* Rounded corners only on the left side */
+  border-radius: 5px 0 0 5px;
   color: black;
 }
 
@@ -63,21 +62,18 @@ input[type="text"]::placeholder {
   font-size: 20px; /* Adjusted placeholder font size */
 }
 
-/* Button Styling */
 button {
-  width: 15%; /* Adjusted width to match the remaining space next to input */
   background-color: #cc1f19;
   border: none;
   color: white;
-  padding: 12px; /* Same padding as the input field */
-  font-size: 20px; /* Match font size with input */
-  font-weight: bold; /* Bold text for the button */
+  padding: 12px 20px; /* Increased button padding for a better fit */
+  font-size: 16px;
   cursor: pointer;
-  border-radius: 0 5px 5px 0; /* Rounded corners only on the right side */
+  border-radius: 0 5px 5px 0;
 }
 
 button:hover {
-  background-color: #b91a15; /* Slightly darker color on hover */
+  background-color: #cc1f19;
 }
 
 /* Result Section Styling */
