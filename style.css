@@ -9,7 +9,7 @@ body {
 
 /* Header Styling */
 .header {
-  background-color: #1e70bf; /* Darker blue for header background */
+  background-color: #5382ad; /* Darker blue for header background */
   color: white;
   padding: 20px;
   font-size: 24px;
@@ -63,7 +63,7 @@ input[type="text"]::placeholder {
 }
 
 button {
-  background-color: #d9534f;
+  background-color: #cc1f19;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -73,7 +73,7 @@ button {
 }
 
 button:hover {
-  background-color: #c9302c;
+  background-color: #cc1f19;
 }
 
 /* Result Section Styling */
@@ -85,32 +85,25 @@ button:hover {
 #result h2 {
   color: black;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 22px;
   margin: 0;
   padding-bottom: 10px;
   position: relative;
 }
 
-#result h2::after {
-  content: "";
-  display: block;
-  width: 100%; /* Full width of the container */
-  height: 2px; /* Thickness of the line */
-  background-color: #ccc; /* Color of the line */
-  margin-top: 5px; /* Space between text and line */
-}
 
 #character-list {
   list-style-type: disc;
   padding-left: 20px;
   color: black;
   font-size: 16px;
+  font-weight: bold;
   line-height: 1.5; /* Adjust line spacing for better readability */
 }
 
 /* Error Message Styling */
 .error {
-  color: red;
+  color: rgb(185, 39, 39);
   font-weight: bold;
   margin-top: 10px;
 }
