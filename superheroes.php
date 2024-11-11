@@ -68,9 +68,10 @@ $query = isset($_GET['query']) ? strtolower(trim($_GET['query'])) : '';
 
 // If the query is empty, return an empty array
 if (empty($query)) {
-    echo json_encode([]);
+    echo json_encode($superheroes);
     exit;
 }
+
 
 // Function to search for a superhero by alias or name (case-insensitive)
 function searchSuperheroes($query, $superheroes) {
