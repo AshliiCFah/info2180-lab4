@@ -12,7 +12,7 @@ body {
   background-color: #4a7dac; /* blue for header background */
   color: white;
   padding: 20px;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bold;
   font-family: 'Roboto', sans-serif; 
   text-align: center;
@@ -96,7 +96,7 @@ button:hover {
   list-style-type: disc;
   padding-left: 20px;
   color: black;
-  font-size: 22px;
+  font-size: 28px;
   font-weight: bold; /* Bolded the names in the character list */
   line-height: 2; /* Adjust line spacing for better readability */
 }
