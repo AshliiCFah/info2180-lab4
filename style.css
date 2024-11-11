@@ -14,6 +14,7 @@ body {
   padding: 20px;
   font-size: 24px;
   font-weight: bold;
+  font-family: 'Roboto', sans-serif; /* Changed font to Roboto */
   text-align: center;
 }
 
@@ -49,7 +50,7 @@ body {
 }
 
 input[type="text"] {
-  width: 70%;
+  width: 85%; /* Increased the width of the search field */
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -79,24 +80,25 @@ button:hover {
 #result {
   text-align: left;
   padding: 20px;
+  border-bottom: 1px solid #ccc; /* Changed horizontal line color to a subtle gray */
 }
 
 #result h2 {
   color: black;
   font-weight: bold;
   font-size: 26px;
+  font-family: 'Roboto', sans-serif; /* Changed font to Roboto */
   margin: 0;
   padding-bottom: 10px;
   position: relative;
 }
-
 
 #character-list {
   list-style-type: disc;
   padding-left: 20px;
   color: black;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: bold; /* Bolded the names in the character list */
   line-height: 1.5; /* Adjust line spacing for better readability */
 }
 
