@@ -50,7 +50,7 @@ body {
 }
 
 input[type="text"] {
-  width: 85%; /* Increased the width of the search field */
+  width: 100%; /* Increased the width of the search field */
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
