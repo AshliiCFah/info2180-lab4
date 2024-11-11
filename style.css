@@ -1,6 +1,6 @@
 /* Body Styling */
 body {
-  background-color: #f0f0f0; /* Unified background color */
+  background-color: #f5f5f5; /* Unified background color */
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -19,14 +19,13 @@ body {
 
 /* Main Content Section Styling */
 .main-content {
-  background-color: #ffffff; /* White background for the main content area */
-  max-width: 800px; /* Sets a max width for better readability */
-  margin: 0 auto; /* Centers the main content */
-  padding: 20px; /* Adds padding inside the main content area */
+  background-color: #f5f5f5; /* Lighter gray for content background */
+  margin: 0 auto;
+  padding: 20px 0;
+  width: 60%;
   box-sizing: border-box;
   text-align: center;
   border-radius: 5px; /* Optional for a card-like look */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better separation */
 }
 
 /* Search Section Styling */
