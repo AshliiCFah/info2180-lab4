@@ -3,22 +3,27 @@ document.addEventListener("DOMContentLoaded", function() {
         const searchInput = document.getElementById("search-input").value.trim();
         const sanitizedQuery = encodeURIComponent(searchInput);
 
-        // Create a new XMLHttpRequest object
         const xhr = new XMLHttpRequest();
 
-        // Define what happens when the response is loaded
         xhr.onload = function() {
             const resultDiv = document.getElementById("result");
-            resultDiv.innerHTML = '';  // Clear previous results
+            resultDiv.innerHTML = ''; // Clear previous results
 
             if (xhr.status === 200) {
-                const response = JSON.parse(xhr.responseText); // Parse JSON response
+                const response = JSON.parse(xhr.responseText);
 
                 if (response.length === 0) {
-                    // No superheroes found
                     resultDiv.innerHTML = '<p class="error">SUPERHERO NOT FOUND</p>';
-                } else if (response.length === 1) {
-                    // Display single superhero details with "RESULT" title
+                } else if (typeof response[0] === "string") {
+                    // If the response is a list of names (no query input)
+                    let listHtml = '<h2>RESULT</h2><hr><ul>';
+                    response.forEach(alias => {
+                        listHtml += `<li>${alias}</li>`;
+                    });
+                    listHtml += '</ul>';
+                    resultDiv.innerHTML = listHtml;
+                } else {
+                    // If specific heroes are returned (with query input)
                     const hero = response[0];
                     resultDiv.innerHTML = `
                         <h2>RESULT</h2><hr>
@@ -26,25 +31,14 @@ document.addEventListener("DOMContentLoaded", function() {
                         <h4>A.K.A ${hero.name}</h4>
                         <p>${hero.biography}</p>
                     `;
-                } else {
-                    // Display list of superheroes with "RESULT" title
-                    let listHtml = '<h2>RESULT</h2><hr><ul>';
-                    response.forEach(hero => {
-                        listHtml += `<li>${hero.alias} - ${hero.name}</li>`;
-                    });
-                    listHtml += '</ul>';
-                    resultDiv.innerHTML = listHtml;
                 }
             } else {
                 resultDiv.innerHTML = '<p class="error">An error occurred while trying to fetch the data.</p>';
             }
         };
 
-        // Configure the AJAX request to superheroes.php with query parameter
+        // Send AJAX request with or without a query
         xhr.open("GET", `superheroes.php?query=${sanitizedQuery}`, true);
-
-        // Send the request
         xhr.send();
     });
 });
-
