@@ -53,13 +53,13 @@ input[type="text"] {
   width: 70%;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #f5f5f5;
   border-radius: 5px 0 0 5px;
   color: black;
 }
 
 input[type="text"]::placeholder {
-  color: #ccc;
+  color: #f5f5f5;
 }
 
 button {
@@ -92,7 +92,7 @@ button:hover {
 
 #result hr {
   border: none;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #f5f5f5;
   margin: 10px 0;
 }
 
