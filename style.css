@@ -20,11 +20,10 @@ body {
 
 /* Main Content Section Styling */
 .main-content {
-  background-color: #f5f5f5; /* Lighter gray for content background */
+  background-color: #f0f0f0; /* Lighter gray for content background */
   margin: 0 auto;
   padding: 20px 0;
-  width: 80%;
-  box-sizing: border-box;
+  width: 70%;
   text-align: center;
 }
 
