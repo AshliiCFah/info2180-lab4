@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     // No superheroes found
                     resultDiv.innerHTML = '<p class="error">SUPERHERO NOT FOUND</p>';
                 } else if (response.length === 1) {
-                    // Display single superhero details
+                    // Display single superhero details with "RESULT" title
                     const hero = response[0];
                     resultDiv.innerHTML = `
                         <h2>RESULT</h2><hr>
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <p>${hero.biography}</p>
                     `;
                 } else {
-                    // Display list of superheroes
+                    // Display list of superheroes with "RESULT" title
                     let listHtml = '<h2>RESULT</h2><hr><ul>';
                     response.forEach(hero => {
                         listHtml += `<li>${hero.alias} - ${hero.name}</li>`;
