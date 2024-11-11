@@ -12,7 +12,7 @@ body {
   background-color: #4a7dac; /* blue for header background */
   color: white;
   padding: 20px;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   font-family: 'Roboto', sans-serif; 
   text-align: center;
@@ -23,7 +23,7 @@ body {
   background-color: #f0f0f0; /* Lighter gray for content background */
   margin: 0 auto;
   padding: 20px 0;
-  width: 65%;
+  width: 60%;
   text-align: center;
 }
 
@@ -49,9 +49,9 @@ body {
 }
 
 input[type="text"] {
-  width: 90%; /* Increased the width of the search field */
+  width: 80%; /* Increased the width of the search field */
   padding: 12px; /* Added more padding for better fit */
-  font-size: 20px;
+  font-size: 18px;
   border: 1px solid #ccc;
   border-radius: 5px 0 0 5px;
   color: black;
@@ -67,7 +67,7 @@ button {
   border: none;
   color: white;
   padding: 12px 20px; /* Increased button padding for a better fit */
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
   border-radius: 0 5px 5px 0;
 }
