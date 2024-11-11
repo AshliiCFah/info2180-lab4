@@ -33,7 +33,7 @@ body {
 }
 
 .search-section label {
-  font-size: 16px;
+  font-size: 18px; /* Increased font size for the label */
   font-weight: bold;
   color: #333;
   display: block;
@@ -49,8 +49,8 @@ body {
 }
 
 input[type="text"] {
-  width: 100%; /* Increased the width of the search field */
-  padding: 10px;
+  width: 90%; /* Increased the width of the search field */
+  padding: 12px; /* Added more padding for better fit */
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px 0 0 5px;
@@ -59,13 +59,14 @@ input[type="text"] {
 
 input[type="text"]::placeholder {
   color: #ccc;
+  font-size: 14px; /* Adjusted placeholder font size */
 }
 
 button {
   background-color: #cc1f19;
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 20px; /* Increased button padding for a better fit */
   font-size: 16px;
   cursor: pointer;
   border-radius: 0 5px 5px 0;
@@ -79,7 +80,6 @@ button:hover {
 #result {
   text-align: left;
   padding: 20px;
-  border-bottom: 1px solid #ccc; /* Changed horizontal line color to a subtle gray */
 }
 
 #result h2 {
